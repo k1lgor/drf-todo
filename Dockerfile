@@ -6,7 +6,7 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-COPY COPY ./requirements.txt /app/
+COPY ./requirements.txt /app/
 RUN pip install pip --upgrade
 RUN pip install -r requirements.txt --no-cache-dir
 
