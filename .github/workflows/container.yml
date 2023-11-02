@@ -2,7 +2,7 @@ name: container
 
 on: [ push ]
 jobs:
-  publish-hello-docker-image:
+  drf-todo:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
