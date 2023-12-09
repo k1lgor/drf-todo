@@ -14,24 +14,31 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
 
 from todo import views
 
 urlpatterns = [
+    # Admin panel
     path("admin/", admin.site.urls),
-    # Auth
-    path("signup/", views.signupuser, name="signupuser"),
-    path("login/", views.loginuser, name="loginuser"),
-    path("logout/", views.logoutuser, name="logoutuser"),
-    # Todos
-    path("", views.home, name="home"),
-    path("create/", views.createtodo, name="createtodo"),
-    path("current/", views.currenttodos, name="currenttodos"),
-    path("completed/", views.completedtodos, name="completedtodos"),
-    path("todo/<int:todo_pk>", views.viewtodo, name="viewtodo"),
-    path("todo/<int:todo_pk>/complete", views.completetodo, name="completetodo"),
-    path("todo/<int:todo_pk>/delete", views.deletetodo, name="deletetodo"),
+    # User authentication
+    path("signup/", views.signupuser, name="signupuser"),  # User signup
+    path("login/", views.loginuser, name="loginuser"),  # User login
+    path("logout/", views.logoutuser, name="logoutuser"),  # User logout
+    # Todo operations
+    path("", views.home, name="home"),  # Home page
+    path("create/", views.createtodo, name="createtodo"),  # Create a new todo
+    path("current/", views.currenttodos, name="currenttodos"),  # View current todos
+    path(
+        "completed/", views.completedtodos, name="completedtodos"
+    ),  # View completed todos
+    path("todo/<int:todo_pk>", views.viewtodo, name="viewtodo"),  # View a specific todo
+    path(
+        "todo/<int:todo_pk>/complete", views.completetodo, name="completetodo"
+    ),  # Mark a todo as complete
+    path(
+        "todo/<int:todo_pk>/delete", views.deletetodo, name="deletetodo"
+    ),  # Delete a todo
     # API
-    path("api/", include("api.urls")),
+    path("api/", include("api.urls")),  # API endpoints
 ]
