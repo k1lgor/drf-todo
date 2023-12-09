@@ -5,6 +5,16 @@ from todo.models import Todo
 
 
 class TodoTest(TestCase):
+    """
+    Test case for the Todo model.
+
+    Methods:
+        test_create_todo_with_all_required_fields(): Test creating a Todo with all required fields.
+        test_create_todo_with_only_required_fields(): Test creating a Todo with only required fields.
+        test_update_todo_title(): Test updating the title of a Todo.
+
+    """
+
     def test_create_todo_with_all_required_fields(self):
         user = User.objects.create_user(username="testuser", password="testpassword")
         todo = Todo(title="Test Todo", user=user)
